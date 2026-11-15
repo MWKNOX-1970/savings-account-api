@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: savings-account-api
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/bank}
+    username: ${DB_USER:bank}
+    password: ${DB_PASSWORD:bank}
+    hikari:
+      connection-timeout: 3000
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate   # schema is owned by Flyway
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      timeout: 500ms
+      connect-timeout: 500ms
+
+app:
+  offensive-nicknames:
+    refresh-minutes: 5
+  cache:
+    enabled: true
+    ttl-minutes: 10
+  account:
+    max-per-customer: 5
